@@ -24,7 +24,9 @@ sudo ln -fs /etc/gunicorn.d/hello.py /home/box/web/etc/g_conf.py
 
 ### 2.1 MVC фреймворки
 
-sudo pip3 install Django==2.2.14
+# sudo pip3 install Django==2.2.14
+sudo pip3 install Django==2.1
+ALLOWED_HOSTS = ['*']
 
 # commands
 # django-admin startproject ask
@@ -36,3 +38,7 @@ sudo pip3 install Django==2.2.14
 # gunicorn ask.wsgi
 # gunicorn -b 0.0.0.0:8000 --workers=1 ask.wsgi
 # gunicorn -b 0.0.0.0:8000  ask.wsgi
+# python3.4 /usr/local/bin/gunicorn -b 0.0.0.0:8080 ask.wsgi
+
+# sudo apt-get install sqlite3
+# python3.5 /usr/local/bin/gunicorn -b 0.0.0.0:8080 ask.wsgi
