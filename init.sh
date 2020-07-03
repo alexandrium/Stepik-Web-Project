@@ -1,3 +1,5 @@
+# git:    https://github.com/alexandrium/Stepik-Web-Project.git
+
 sudo ln -fs /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
 
