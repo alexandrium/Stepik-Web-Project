@@ -18,3 +18,19 @@ sudo pip3 install --upgrade gunicorn
 sudo ln -fs /etc/gunicorn.d/hello.py /home/box/web/etc/g_conf.py
 # cd /home/box/web
 # python3.4 /usr/local/bin/gunicorn -b 0.0.0.0:8080 hello:app
+# gunicorn -b 0.0.0.0:8080 hello:app
+
+### 2.1 MVC фреймворки
+
+sudo pip3 install Django==2.2.14
+
+# commands
+# django-admin startproject ask
+# cd ask
+# python3 manage.py startapp qa
+
+# python manage.py runserver       # The development server
+
+# gunicorn ask.wsgi
+# gunicorn -b 0.0.0.0:8000 --workers=1 ask.wsgi
+# gunicorn -b 0.0.0.0:8000  ask.wsgi
