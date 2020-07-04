@@ -16,8 +16,8 @@ class Question(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField()
     rating = models.IntegerField()
-    author = models.ForeignKey(User, on_delete=models.SET_NULL)
-    likes = models.ManyToManyField(User)
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    likes = models.ManyToManyField(User, related_name='likes_set')
     # likes = models.ForeignKey(User)
 
     # class Meta:
@@ -30,5 +30,5 @@ class Question(models.Model):
 class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField()
-    question = models.ForeignKey(Question, on_delete=models.SET_NULL)
-    author = models.ForeignKey(User, on_delete=models.SET_NULL)
+    question = models.ForeignKey(Question, null=True, on_delete=models.SET_NULL)
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
