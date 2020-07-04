@@ -1,4 +1,4 @@
-# git:    https://github.com/alexandrium/Stepik-Web-Project.git
+# git:    git clone https://github.com/alexandrium/Stepik-Web-Project.git web
 
 sudo ln -fs /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
@@ -26,7 +26,7 @@ sudo ln -fs /etc/gunicorn.d/hello.py /home/box/web/etc/g_conf.py
 
 # sudo pip3 install Django==2.2.14
 sudo pip3 install Django==2.1
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
 
 # commands
 # django-admin startproject ask
@@ -42,3 +42,5 @@ ALLOWED_HOSTS = ['*']
 
 # sudo apt-get install sqlite3
 # python3.5 /usr/local/bin/gunicorn -b 0.0.0.0:8080 ask.wsgi
+
+# sudo pip3 install mysqlclient
