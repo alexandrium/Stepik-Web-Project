@@ -22,14 +22,14 @@ from qa import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
 
-    path('', views.test, name='test'),
+    path('', views.new, name='new'),
     path('login/', views.test, name='test'),
     path('signup/', views.test, name='test'),
 
-    re_path(r'^question/(?P<id>\d+)/$', views.test, name='test'),
+    re_path(r'^question/(?P<id>\d+)/$', views.detail, name='detail'),
 
     path('ask/', views.test, name='test'),
-    path('popular/', views.test, name='test'),
+    path('popular/', views.popular, name='popular'),
     path('new/', views.test, name='test'),
 ]
 

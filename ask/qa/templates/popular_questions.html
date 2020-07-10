@@ -1,0 +1,23 @@
+<h2>Popular questions:</h2>
+
+
+{% for q in page.object_list %}
+  <div>
+    <a href="{% url 'detail' q.id %}">
+  {{ q.title }}</a>
+  </div>
+{% endfor %}
+
+
+<nav><ul class="pagination">
+{% for p in paginator.page_range %}
+  {% if p == page.number %}
+  <li class="active">
+  {% else %}
+  <li>
+  {% endif %}
+    <a href="{% url 'popular' %}?page={{ p }}">
+    page_{{ p }}</a>
+</li>
+{% endfor %}
+</ul></nav>
