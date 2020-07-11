@@ -1,4 +1,4 @@
-{% for q in posts %}
+{% for q in page.object_list %}
   <div>
     <a href="question/{{ q.id }}">
   {{ q.title }}</a>
@@ -7,7 +7,7 @@
 
 
 <nav><ul class="pagination">
-{% for p in paginator.page_range %}
+{% for p in page.paginator.page_range %}
   {% if p == page.number %}
   <li class="active">
   {% else %}

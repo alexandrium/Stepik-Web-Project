@@ -24,20 +24,18 @@ def new(request):
     # if paginator.count == 0:
     #     return test('LOL')
 
-    page, paginator = paginate(request, questions)
+    page = paginate(request, questions)
 
     return render(request, '10_qustions.html', {
-        'posts': page.object_list,
-        'paginator': paginator, 'page': page,
+        'page': page,
     })
 
 
 def popular(request):
     questions = Question.objects.popular()
-    page, paginator = paginate(request, questions)
+    page = paginate(request, questions)
     return render(request, 'popular_questions.html', {
         'page': page,
-        'paginator': paginator
     })
 
 
@@ -69,4 +67,4 @@ def paginate(request, qs):
     except EmptyPage:
         page = paginator.page(paginator.num_pages)
 
-    return page, paginator
+    return page

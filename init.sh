@@ -25,5 +25,5 @@ cd /home/box/web/ask
 # python3.5 /usr/local/bin/gunicorn -b 0.0.0.0:8080 ask.wsgi
 
 
-# sudo apt-get install sqlite3
+# sudo apt-get install -y sqlite3
 # sudo pip3 install mysqlclient

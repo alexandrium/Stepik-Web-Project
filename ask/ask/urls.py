@@ -30,6 +30,6 @@ urlpatterns = [
 
     path('ask/', views.test, name='test'),
     path('popular/', views.popular, name='popular'),
-    path('new/', views.test, name='test'),
+    path('new/', views.new, name='test'),
 ]
 
