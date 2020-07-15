@@ -25,7 +25,7 @@ class AskForm(forms.Form):
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
-        fields = ['text']  # , 'content', 'category', 'tags']
+        fields = ['text', 'question']  # , 'content', 'category', 'tags']
 
     # def __init__(self, *args, **kwargs):
     #     super(AnswerForm, self).__init__(*args, **kwargs)
