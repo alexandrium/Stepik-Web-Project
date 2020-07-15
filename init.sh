@@ -21,9 +21,9 @@ sudo ln -fs /etc/gunicorn.d/hello.py /home/box/web/etc/g_conf.py
 
 
 cd /home/box/web/ask
-# python3.4 /usr/local/bin/gunicorn -b 0.0.0.0:8080 ask.wsgi
-# python3.5 /usr/local/bin/gunicorn -b 0.0.0.0:8080 ask.wsgi
+# python3.5 /usr/local/bin/gunicorn -b 0.0.0.0:8000 ask.wsgi
 
+# python3.5 /usr/local/bin/gunicorn -b 0.0.0.0:8000 /home/box/web/ask/ask/wsgi:application
 
 # sudo apt-get install -y sqlite3
 # sudo pip3 install mysqlclient

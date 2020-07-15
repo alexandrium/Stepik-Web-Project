@@ -15,7 +15,6 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path, re_path
-
 from qa import views
 
 
@@ -28,7 +27,7 @@ urlpatterns = [
 
     re_path(r'^question/(?P<id>\d+)/$', views.detail, name='detail'),
 
-    path('ask/', views.test, name='test'),
+    path('ask/', views.ask, name='ask'),
     path('popular/', views.popular, name='popular'),
     path('new/', views.new, name='test'),
 ]

@@ -1,6 +1,6 @@
 {% for q in page.object_list %}
   <div>
-    <a href="question/{{ q.id }}">
+    <a href="{% url 'detail' q.id %}">
   {{ q.title }}</a>
   </div>
 {% endfor %}
