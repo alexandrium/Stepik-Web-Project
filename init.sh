@@ -27,3 +27,5 @@ cd /home/box/web/ask
 
 # sudo apt-get install -y sqlite3
 # sudo pip3 install mysqlclient
+
+# chmod 777 db.sqlite3  # needs for tests or not, I don't know ??

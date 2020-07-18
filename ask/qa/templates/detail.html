@@ -5,11 +5,13 @@
 <div>
     {{ question.text }}
 </div>
-
+<p>
+    Автор: {{ question.author }}
+</p>
 
 <ul>
 {% for answer in question.answer_set.all %}
-    <li>{{ answer.text }}</li>
+    <li>{{ answer.text }}   ({{ answer.author}})</li>
 {% endfor %}
 </ul>
 

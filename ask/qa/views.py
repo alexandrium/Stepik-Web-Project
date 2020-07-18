@@ -1,15 +1,37 @@
 from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse
 
+from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+# from django.contrib.sessions import *
+
+
 from .models import Question
-from .forms import AskForm, AnswerForm
+from .forms import AskForm, AnswerForm, UserCreationForm
+# from django.contrib.auth.forms import UserCreationForm
+
+# def test(request, *args, **kwargs):
+#     from django.http import HttpResponse
+#     return HttpResponse('OK')
 
 
-def test(request, *args, **kwargs):
-    from django.http import HttpResponse
-    return HttpResponse('OK')
+def signup(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            # url = request.GET.get('continue', '/')
+            return redirect('new')
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'signup.html', {
+        'form': form,
+    })
 
 
 def new(request):
@@ -45,11 +67,20 @@ def popular(request):
 def detail(request, id):
     if request.method == "POST":
         form = AnswerForm(request.POST)
+
+        if request.user.is_authenticated:
+            form._user = request.user
+            
         if form.is_valid():
-            form.save(id)
-            return HttpResponseRedirect(reverse(detail, kwargs={'id': id}))
+            form.save(id)   # new strange logic in form.save, can be rew:
+            #  answer = form.save(commit=False); answer.question_id = id; answer.save()???
+            # return HttpResponseRedirect(reverse(detail, kwargs={'id': id}))
+            # return HttpResponseRedirect('/question/' + str(id) + '/')
+            return redirect('detail', id=id)
+            # return redirect('detail', id)
     else:
         form = AnswerForm()
+        # form = AnswerForm(initial={"question": id})
 
     question = get_object_or_404(Question, id=id)
 
@@ -62,17 +93,18 @@ def detail(request, id):
     })
 
 
+@login_required(login_url='login')
 def ask(request):
     if request.method == "POST":
         form = AskForm(request.POST)
+        form._user = request.user
         if form.is_valid():
             question = form.save()
-            return HttpResponseRedirect(reverse(detail, kwargs={'id': question.id}))
+            # return HttpResponseRedirect(reverse(detail, kwargs={'id': question.id}))
+            return redirect('detail', id=question.id)
     else:
         form = AskForm()
-    return render(request, 'ask.html', {
-        'form': form
-    })
+    return render(request, 'ask.html', {'form': form})
 
 
 def paginate(request, qs):
