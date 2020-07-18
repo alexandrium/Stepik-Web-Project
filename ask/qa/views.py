@@ -93,11 +93,15 @@ def detail(request, id):
     })
 
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def ask(request):
     if request.method == "POST":
         form = AskForm(request.POST)
-        form._user = request.user
+
+        if request.user.is_authenticated:
+            form._user = request.user
+
+        # form._user = request.user
         if form.is_valid():
             question = form.save()
             # return HttpResponseRedirect(reverse(detail, kwargs={'id': question.id}))
