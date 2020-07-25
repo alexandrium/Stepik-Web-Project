@@ -1,25 +1,50 @@
-<h2 class="title">Popular questions:</h2>
-<!--<link rel="stylesheet" href="https://www.freebsd.org/doc/ru_RU.KOI8-R/books/handbook/docbook.css">-->
+{% load static %}
 
-<dl>
-  {% for q in page.object_list %}
-    <div class="toc-title">
-      <a href="{% url 'detail' q.id %}">
-        {{ q.title }}</a>
-    </div>
-  {% endfor %}
-</dl>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
 
 
-<nav><ul class="pagination">
-  {% for p in page.paginator.page_range %}
-    {% if p == page.number %}
-    <li class="active">
-    {% else %}
-    <li>
-    {% endif %}
-    <a style="color: red" href="{% url 'popular' %}?page={{ p }}">
-    page_{{ p }}</a>
-    </li>
-  {% endfor %}
-</ul></nav>
+  <body>
+    <h2 class="title">Popular questions:</h2>
+    <!--<link rel="stylesheet" href="https://www.freebsd.org/doc/ru_RU.KOI8-R/books/handbook/docbook.css">-->
+
+    <section class="features">
+      {% for q in page.object_list %}
+        <!--<p class="feature-kitten">-->
+          <a href="{% url 'detail' q.id %}">{{ q.title }}</a>
+        <!--</p>-->
+      <!--<p class="feature-train">Хозяин натренирован на 100%</p>-->
+      <!--<p class="feature-cat">Профессиональный кот уже более 5 лет</p>-->
+      {% endfor %}
+    </section>
+
+
+    <dl>
+      {% for q in page.object_list %}
+        <div class="toc-title q--li"">
+          <a href="{% url 'detail' q.id %}" rel class="q--li--text">
+            {{ q.title }}</a>
+        </div>
+      {% endfor %}
+    </dl>
+
+
+    <nav><ul class="pagination">
+      {% for p in page.paginator.page_range %}
+        {% if p == page.number %}
+        <li class="active">
+        {% else %}
+        <li>
+        {% endif %}
+        <a style="color: red" href="{% url 'popular' %}?page={{ p }}">
+        page_{{ p }}</a>
+        </li>
+      {% endfor %}
+    </ul></nav>
+
+  </body>
+
+</html>

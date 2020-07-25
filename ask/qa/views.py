@@ -1,31 +1,25 @@
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse
-
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 # from django.contrib.sessions import *
-
-
 from .models import Question
 from .forms import AskForm, AnswerForm, UserCreationForm
 # from django.contrib.auth.forms import UserCreationForm
 
-# def test(request, *args, **kwargs):
-#     from django.http import HttpResponse
-#     return HttpResponse('OK')
-
 
 def signup(request):
+    redirect_to = request.GET.get('next', '/')
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            # url = request.GET.get('continue', '/')
-            return redirect('new')
+            # return redirect('new')
+            return redirect(redirect_to)
+            # return redirect('/popular/?page=3')
     else:
         form = UserCreationForm()
 
@@ -34,11 +28,12 @@ def signup(request):
     })
 
 
-def new(request):
+# def logout(request):
+#     auth_views.logout(request)
+#     return redirect('questions:index')
 
-    # for i in range(20):
-    #     Question.objects.create(title="test_title_"+str(i), text='test_text_'+str(i))
-    # return test('LOL')
+
+def new(request):
 
     questions = Question.objects.new()
 

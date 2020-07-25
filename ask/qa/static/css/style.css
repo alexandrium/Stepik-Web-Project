@@ -1,0 +1,76 @@
+h2 {
+    color: red;
+}
+
+
+p {
+    color: red;
+    border: 6px solid #cc0000;
+    padding 45px;
+    margin-bottom: 30px;
+}
+
+
+.q--li {
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: rgb(240, 240, 240);
+    border-right-color: rgb(240, 240, 240);
+    border-bottom-color: rgb(240, 240, 240);
+    border-left-color: rgb(240, 240, 240);
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+    color: rgba(0, 0, 0, 0.12);
+    padding-top: 0.8em;
+    padding-right: 1.25em;
+    padding-bottom: 0.8em;
+    padding-left: 4.1em;
+    position: relative;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+
+/*
+.q--li--text {
+    color: rgb(0, 91, 209);
+    vertical-align: middle;
+}
+
+/*
+a {
+    color: rgb(0, 91, 209);
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    cursor: pointer;
+
+    font-family: Helvetica, Arial, sans-serif;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+
+/*
+a {
+    color: red;
+    border: 6px solid #00ff00;
+    margin-left: 20px;
+    padding 40px;
+    padding-right: 30px;
+    padding-top: 40px;
+    margin-bottom: 30px;
+    margin: 50px;
+}
