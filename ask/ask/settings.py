@@ -25,6 +25,24 @@ SECRET_KEY = '3!tf9)*f2u$0=#nsr^=b4ai$%d3$n_0+)x3aedq(9#h%=l51ei'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# LOGGING = {
+#     'version': 1,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'level': 'DEBUG',
+#         },
+#     },
+#     'root': {
+#         'handlers': ['console'],
+#     }
+# }
+
+
 ALLOWED_HOSTS = ['*']
 
 

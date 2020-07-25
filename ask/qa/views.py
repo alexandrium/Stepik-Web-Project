@@ -68,16 +68,15 @@ def detail(request, id):
             
         if form.is_valid():
             form.save(id)   # new strange logic in form.save, can be rew:
-            #  answer = form.save(commit=False); answer.question_id = id; answer.save()???
+            #  answer = form.save(commit=False); answer.question_id = id; answer.save()
             # return HttpResponseRedirect(reverse(detail, kwargs={'id': id}))
             # return HttpResponseRedirect('/question/' + str(id) + '/')
             return redirect('detail', id=id)
-            # return redirect('detail', id)
     else:
         form = AnswerForm()
         # form = AnswerForm(initial={"question": id})
 
-    question = get_object_or_404(Question, id=id)
+    question = get_object_or_404(Question, id=id)   # x3 SELECT from 3 tables; O_o
 
     return render(request, 'detail.html', {
         'question': question,
